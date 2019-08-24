@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HonestIpsumController@generate')->name('honest-ipsum.get');
+Route::post('/', 'HonestIpsumController@api')->name('honest-ipsum.post');
+Route::get('/api', 'HonestIpsumController@api')->name('api.honest-ipsum.get');
