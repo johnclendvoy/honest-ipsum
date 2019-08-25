@@ -37,7 +37,7 @@
 			of easy to understand placeholder text.
 		</div>
 		<div class="flex justify-center">
-			<button onclick="generateIpsum()" id="generate_button" class="bg-teal-600 text-white text-base font-semibold rounded px-4 py-2  uppercase shadow hover:bg-teal-500">
+			<button type="button" onclick="generateIpsum();" id="generate_button" class="bg-teal-600 text-white text-base font-semibold rounded px-4 py-2  uppercase shadow hover:bg-teal-500">
 			Generate Text
 			</button>
 		</div>
@@ -47,12 +47,12 @@
 
 		<div class="w-full md:w-1/2 mb-6 mr-0 md:mb-0 md:mr-2">
 			<div class="flex items-center mb-2 mx-4 sm:mx-0">
-				<h2 class="uppercase text-lg text-gray-600 mr-2">TEXT</h2>
-				<button id="copy_text_button" onclick="copyText()" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
+				<h2 class="uppercase text-lg text-gray-700 mr-2">TEXT</h2>
+				{{-- <button id="copy_text_button" onclick="copyText();" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
 						<svg class="h-4 w-4 fill-current" viewBox="0 0 384 512">
 							<path d="M336 64h-80c0-35.29-28.71-64-64-64s-64 28.71-64 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h42v36c0 6.627 5.373 12 12 12h168c6.627 0 12-5.373 12-12v-36h42a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zM192 40c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24"/>
 						</svg>
-				</button>
+				</button> --}}
 			</div>
 			<div id="text_area" class="p-4 shadow md:rounded-lg bg-white w-full">
 				{!! $ipsum !!}
@@ -62,12 +62,12 @@
 
 		<div class="w-full md:w-1/2 mb-6 mr-0 md:mb-0 md:ml-2">
 			<div class="flex items-center mb-2 mx-4 sm:mx-0">
-				<h2 class="uppercase text-lg text-gray-600 mr-2">HTML</h2>
-				<button id="copy_code_button" onclick="copyCode()" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
+				<h2 class="uppercase text-lg text-gray-700 mr-2">HTML</h2>
+				{{-- <button id="copy_code_button" onclick="copyCode();" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
 						<svg class="h-4 w-4 fill-current" viewBox="0 0 384 512">
 							<path d="M336 64h-80c0-35.29-28.71-64-64-64s-64 28.71-64 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h42v36c0 6.627 5.373 12 12 12h168c6.627 0 12-5.373 12-12v-36h42a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zM192 40c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24"/>
 						</svg>
-				</button>
+				</button> --}}
 			</div>
 
 			<div id="code_area" class="text-sm font-mono p-4 shadow md:rounded-lg bg-gray-800 text-teal-200 w-full">
@@ -79,8 +79,8 @@
 
 	{{-- <div class="bottom-0 sticky"> --}}
 		<div class="flex justify-between">
-			<div>
-				Created By <a class="text-teal-600 hover:text-teal-500" href="johnclendvoy.ca">John C. Lendvoy</a>
+			<div class="text-gray-700">
+				Created By <a class="text-teal-600 hover:text-teal-500" href="https://johnclendvoy.ca">John C. Lendvoy</a>
 			</div>
 			<div>
 				<a class="text-teal-600 hover:text-teal-500" href="https://github.com/johnclendvoy">Github</a>
@@ -129,6 +129,8 @@
 	}
 
 	function generateIpsum () {
+		alert('generating');
+
 		let career = document.getElementById('career_select').value;
 		let element = document.getElementById('element_select').value;
 		let element_count = document.getElementById('element_count_input').value;
