@@ -8,7 +8,7 @@
 		JCL logo
 	</div> --}}
 	<div class="text-center">
-		<h1 class="pt-12 text-5xl font-serif">Honest Ipsum</h1>
+		<h1 class="pt-12 text-6xl font-serif text-white tracking-tight">Honest Ipsum</h1>
 		<p class="text-lg">Placeholder text that needs no explanation.</p>
 	</div>
 </div>
