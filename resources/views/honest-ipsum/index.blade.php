@@ -13,58 +13,89 @@
 	</div>
 </div>
 
-{{-- <div class=""> --}}
 
-	<div class="container mx-auto">
+<div class="container mx-auto">
 
 	<div class="mb-6 mx-auto bg-white w-3/4 shadow-lg rounded-lg p-4 text-lg text-center -mt-12">
-		<div class="mb-4">
+		<div class="mb-4 leading-loose">
 
 			I am a 
-			<select id="career_select" class="border rounded border-gray-400 py-1">
-				<option>Web Developer</option>
-				<option>Graphic Designer</option>
-				<option>Web Designer</option>
-				<option>App Developer</option>
-				<option>Designer</option>
-				<option>Programmer</option>
-			</select> 
+				<select id="career_select" class="font-semibold text-center border-b-4 border-teal-600 px-1 appearance-none hover:border-teal-500">
+					<option>graphic designer</option>
+					<option>web developer</option>
+					<option>web designer</option>
+					<option>app developer</option>
+				</select> 
 			who wants to generate 
 
-			<input id="element_count_input" class="border rounded border-gray-400 w-12 py-1" type="number" value="2">
+			<input id="element_count_input" maxlength="3" class="font-semibold border-b-4 border-teal-600 px-1 w-10 appearance-none text-center hover:border-teal-500" value="2">
 
-			<select id="element_select" class="border rounded border-gray-400 py-1">
+			<select id="element_select" class="font-semibold text-center border-b-4 border-teal-600 appearance-none hover:border-teal-500 px-1">
 				<option value="p">paragraphs</option>
 				<option value="li">list items</option>
 			</select>
 			of easy to understand placeholder text.
 		</div>
 		<div class="flex justify-center">
-			<button onclick="generateIpsum()" id="generate_button" class="bg-teal-600 text-white text-base font-semibold rounded px-4 py-2  uppercase shadow">
+			<button onclick="generateIpsum()" id="generate_button" class="bg-teal-600 text-white text-base font-semibold rounded px-4 py-2  uppercase shadow hover:bg-teal-500">
 			Generate Text
 			</button>
 		</div>
 	</div>
 
-		<div class="flex flex-wrap md:flex-no-wrap">
+	<div class="flex flex-wrap md:flex-no-wrap">
 
-			<div id="content_area" class="w-full md:w-1/2 mb-6 mr-0 md:mb-0 md:mr-2 p-4 shadow md:rounded-lg bg-white">
+		<div class="w-full md:w-1/2 mb-6 mr-0 md:mb-0 md:mr-2">
+			<div class="flex items-center mb-2 mx-4 sm:mx-0">
+				<h2 class="uppercase text-lg text-gray-600 mr-2">TEXT</h2>
+				<button id="copy_text_button" onclick="copyText()" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
+						<svg class="h-4 w-4 fill-current" viewBox="0 0 384 512">
+							<path d="M336 64h-80c0-35.29-28.71-64-64-64s-64 28.71-64 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h42v36c0 6.627 5.373 12 12 12h168c6.627 0 12-5.373 12-12v-36h42a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zM192 40c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24"/>
+						</svg>
+				</button>
+			</div>
+			<div id="text_area" class="p-4 shadow md:rounded-lg bg-white w-full">
 				{!! $ipsum !!}
 			</div>
+			<input type="hidden" id="text_area_input" value="{{ strip_tags($ipsum) }}">
+		</div>
 
-			<code id="code_area" class="w-full md:w-1/2 ml-0 md:ml-2 p-4 shadow md:rounded-lg text-sm bg-gray-800 text-teal-200">
+		<div class="w-full md:w-1/2 mb-6 mr-0 md:mb-0 md:ml-2">
+			<div class="flex items-center mb-2 mx-4 sm:mx-0">
+				<h2 class="uppercase text-lg text-gray-600 mr-2">HTML</h2>
+				<button id="copy_code_button" onclick="copyCode()" class="text-teal-600 flex items-center font-semibold uppercase text-sm hover:text-teal-500">
+						<svg class="h-4 w-4 fill-current" viewBox="0 0 384 512">
+							<path d="M336 64h-80c0-35.29-28.71-64-64-64s-64 28.71-64 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h42v36c0 6.627 5.373 12 12 12h168c6.627 0 12-5.373 12-12v-36h42a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zM192 40c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24"/>
+						</svg>
+				</button>
+			</div>
+
+			<div id="code_area" class="text-sm font-mono p-4 shadow md:rounded-lg bg-gray-800 text-teal-200 w-full">
 				{{ $ipsum }}
-			</code>
+			</div>
+			<input type="hidden" id="code_area_input" value="{{$ipsum}}">
 		</div>
 	</div>
 
-	<script>
+	{{-- <div class="bottom-0 sticky"> --}}
+		<div class="flex justify-between">
+			<div>
+				Created By <a class="text-teal-600 hover:text-teal-500" href="johnclendvoy.ca">John C. Lendvoy</a>
+			</div>
+			<div>
+				<a class="text-teal-600 hover:text-teal-500" href="https://github.com/johnclendvoy">Github</a>
+				<a class="text-teal-600 hovver:text-teal-500" href="https://twitter.com/johnclendvoy">Twitter</a>
+			</div>
+		</div>
+	{{-- </div> --}}
+</div>
+
+<script>
 
 	function postAjax(url, data, success) {
 	    var params = typeof data == 'string' ? data : Object.keys(data).map(
 	            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
 	        ).join('&');
-	
 
 	    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	    xhr.open('POST', url);
@@ -75,6 +106,26 @@
 	    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	    xhr.send(params);
 	    return xhr;
+	}
+
+	let text_area = document.getElementById('text_area');
+	let code_area = document.getElementById('code_area');
+	let text_area_input = document.getElementById('text_area_input');
+	let code_area_input = document.getElementById('code_area_input');
+
+	function copyText () {
+
+		text_area_input.select();
+		// text_area.setSelectionRange(0, 99999); /*For mobile devices*/
+		document.execCommand("copy");
+		console.log('copied text');
+	}
+
+	function copyCode () {
+		code_area_input.select();
+		// code_area.setSelectionRange(0, 99999); /*For mobile devices*/
+		document.execCommand("copy");
+		console.log('copied code');
 	}
 
 	function generateIpsum () {
@@ -89,18 +140,15 @@
 			element_count: element_count,
 		}
 
-		console.log(values);
-
 		postAjax('/', values, function(data){
-			let object = JSON.parse(data);
-			console.log(object); 
-			document.getElementById('content_area').innerHTML = object.result;
-			document.getElementById('code_area').innerHTML = object.result;
-			});
-		}
-
-
-	</script>
+			object = JSON.parse(data);
+			text_area.innerHTML = object.result;
+			code_area.textContent = object.result;
+			text_area.value = text_area.innerHTML;
+			code_area.value = code_area.innerHTML;
+		});
+	}
+</script>
 
 {{-- </div> --}}
 
