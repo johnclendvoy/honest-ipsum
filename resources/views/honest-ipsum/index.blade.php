@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="h-64 bg-fixed bg-cover bg-center" style="background-image: url('/img/forest_landscape.JPG')">
+<div class="h-64 bg-fixed bg-cover bg-center flex-shrink-0" style="background-image: url('/img/forest_landscape.JPG')">
 	{{-- <div class="logo">
 		JCL logo
 	</div> --}}
@@ -22,8 +22,8 @@
 			<span>I am a </span>
 
 			<select id="career_select" class="font-semibold text-center border-b-4 border-teal-600 px-1 appearance-none hover:border-teal-500 rounded-none">
-				<option>graphic designer</option>
 				<option>web developer</option>
+				<option>graphic designer</option>
 				<option>web designer</option>
 				<option>app developer</option>
 			</select> 
