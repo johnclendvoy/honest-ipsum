@@ -48,7 +48,7 @@
 		@yield('css')
 		
 	</head>
-	<body class="antialiased text-gray-900 h-screen bg-gray-200">
+	<body class="antialiased text-gray-900 h-screen bg-gray-200 flex flex-col">
         @yield('content')
 		@yield('scripts')
 	</body>

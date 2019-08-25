@@ -14,28 +14,32 @@
 </div>
 
 
-<div class="container mx-auto">
+<div class="container mx-auto flex-1">
 
 	<div class="mb-6 mx-auto bg-white w-3/4 shadow-lg rounded-lg p-4 text-lg text-center -mt-12">
 		<div class="mb-4 leading-loose">
 
-			I am a 
-				<select id="career_select" class="font-semibold text-center border-b-4 border-teal-600 px-1 appearance-none hover:border-teal-500">
-					<option>graphic designer</option>
-					<option>web developer</option>
-					<option>web designer</option>
-					<option>app developer</option>
-				</select> 
-			who wants to generate 
+			<span>I am a </span>
 
-			<input id="element_count_input" maxlength="3" class="font-semibold border-b-4 border-teal-600 px-1 w-10 appearance-none text-center hover:border-teal-500" value="2">
+			<select id="career_select" class="font-semibold text-center border-b-4 border-teal-600 px-1 appearance-none hover:border-teal-500 rounded-none">
+				<option>graphic designer</option>
+				<option>web developer</option>
+				<option>web designer</option>
+				<option>app developer</option>
+			</select> 
 
-			<select id="element_select" class="font-semibold text-center border-b-4 border-teal-600 appearance-none hover:border-teal-500 px-1">
+			<span>who wants to generate</span>
+
+			<input id="element_count_input" maxlength="3" class="font-semibold border-b-4 border-teal-600 px-1 w-10 appearance-none text-center hover:border-teal-500 rounded-none" value="2">
+
+			<select id="element_select" class="font-semibold text-center border-b-4 border-teal-600 appearance-none hover:border-teal-500 px-1 rounded-none">
 				<option value="p">paragraphs</option>
 				<option value="li">list items</option>
 			</select>
-			of easy to understand placeholder text.
+
+			<span>of easy to understand placeholder text.</span>
 		</div>
+
 		<div class="flex justify-center">
 			<button type="button" onclick="generateIpsum();" id="generate_button" class="bg-teal-600 text-white text-base font-semibold rounded px-4 py-2  uppercase shadow hover:bg-teal-500">
 			Generate Text
@@ -76,19 +80,17 @@
 			<input type="hidden" id="code_area_input" value="{{$ipsum}}">
 		</div>
 	</div>
-
-	{{-- <div class="bottom-0 sticky"> --}}
-		<div class="flex justify-between">
-			<div class="text-gray-700">
-				Created By <a class="text-teal-600 hover:text-teal-500" href="https://johnclendvoy.ca">John C. Lendvoy</a>
-			</div>
-			<div>
-				<a class="text-teal-600 hover:text-teal-500" href="https://github.com/johnclendvoy">Github</a>
-				<a class="text-teal-600 hovver:text-teal-500" href="https://twitter.com/johnclendvoy">Twitter</a>
-			</div>
-		</div>
-	{{-- </div> --}}
 </div>
+
+<footer class="flex justify-between p-4">
+	<div class="text-gray-700">
+		Created By <a class="text-teal-600 hover:text-teal-500" href="https://johnclendvoy.ca">John C. Lendvoy</a>
+	</div>
+	<div>
+		<a class="text-teal-600 hover:text-teal-500" href="https://github.com/johnclendvoy/honest-ipsum">Github</a>
+		<a class="text-teal-600 hovver:text-teal-500 ml-2" href="https://twitter.com/johnclendvoy">Twitter</a>
+	</div>
+</footer>
 
 <script>
 
@@ -114,7 +116,6 @@
 	let code_area_input = document.getElementById('code_area_input');
 
 	function copyText () {
-
 		text_area_input.select();
 		// text_area.setSelectionRange(0, 99999); /*For mobile devices*/
 		document.execCommand("copy");
@@ -129,8 +130,6 @@
 	}
 
 	function generateIpsum () {
-		alert('generating');
-
 		let career = document.getElementById('career_select').value;
 		let element = document.getElementById('element_select').value;
 		let element_count = document.getElementById('element_count_input').value;
