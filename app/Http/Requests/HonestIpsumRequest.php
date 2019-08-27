@@ -24,8 +24,9 @@ class HonestIpsumRequest extends FormRequest
     public function rules()
     {
         return [
-            'count' => 'nullable|min:1|max:999',
-            'format' => 'nullable',
+            'element_count' => 'nullable|min:1|max:999',
+            'element' => 'nullable',
+            'career' => 'nullable|string',
             'length' => 'nullable|min:1|max:1000'
         ];
     }
