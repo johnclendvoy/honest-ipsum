@@ -6,7 +6,7 @@
 <div class="h-48 sm:h-64 bg-fixed bg-cover bg-center flex-shrink-0" style="background-image: url('/img/forest_landscape.JPG')">
 
 	<div class="mx-auto mt-4 sm:ml-4 flex justify-center sm:justify-start">
-	    <a href=“http://johnclendvoy.ca”>
+	    <a href="https://johnclendvoy.ca">
                 <svg viewBox="0 0 240 90" class="w-16 h-8 fill-current text-teal-600 hover:text-teal-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 		    <polygon points="50,0 90,0 100,17.32 60,86.6 0,86.6 10.00,69.28 0,51.96 20,51.96 30,69.28 60,17.32"/>
 		    <polygon points="110,0 170,0 180,17.32 170,34.64 150,34.64 140, 51.96 150,69.28 140,86.6 80,86.6 120,17.32"/>
