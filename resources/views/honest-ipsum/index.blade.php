@@ -4,14 +4,11 @@
 
 
 <div class="h-48 sm:h-64 bg-fixed bg-cover bg-center flex-shrink-0" style="background-image: url('/img/forest_landscape.JPG')">
-
-
 	<div class="text-center">
 		<h1 class="mt-2 sm:mt-10 text-4xl sm:text-6xl font-serif text-teal-900 leading-tight tracking-tight">Honest Ipsum</h1>
 		<p class="text-lg">Placeholder text that needs no explanation.</p>
 	</div>
 </div>
-
 
 <div class="container mx-auto flex-1">
 
