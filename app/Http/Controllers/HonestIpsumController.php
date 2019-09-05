@@ -16,7 +16,7 @@ class HonestIpsumController extends Controller
         'element_count' => 2,
         'length' => 50,
         'element' => 'p',
-        'career' => 'web_developer',
+        'career' => 'web developer',
     ];
 
     function __construct()
@@ -57,7 +57,7 @@ class HonestIpsumController extends Controller
         $element_count = $request->input('element_count', $this->defaults['element_count']);
         $career = $request->input('career', $this->defaults['career']);
 
-        $this->career = $career;
+        $this->career = str_replace('_', ' ', $career);
         $this->document = $this->getDocument($career);
 
         // should be able to remove these and validate in the request ????
@@ -65,12 +65,6 @@ class HonestIpsumController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'The element must be one of "p", "li", or "br".',
-            ]);
-        }
-        if($length < $this->shortest_sentence_length || $length > 1000) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'The length must be between ' . $this->shortest_sentence_length.' and 1000.',
             ]);
         }
 
@@ -155,41 +149,42 @@ class HonestIpsumController extends Controller
     }
 
     protected $sentences = [
-        'This text is going to be replaced once the _DOCUMENT_ is completed.',
-        'The text that you are reading is only to fill the space visually.',
-        'Once the _DOCUMENT_ is complete this will read something different and more relevant.',
-        'It is useful for a _CAREER_ to use placeholder text so they can easily see what different fonts look like on a realistic paragraph.',
-        'You are currently reading text that is written in English, not Latin.',
-        'Often, something called Lorem Ipsum to fill in paragraphs before their content is finalized.',
-        'There needs to be something here, even though it\'s not what you might expect on a finished _DOCUMENT_.',
-        'When a _CAREER_ needs to fill in a paragraph temporarily, they will often use Latin words; Not in this paragraph though.',
-        'What you are reading now is not what you will be reading in this space once this _DOCUMENT_ is completed.',
-        'If you are reviewing this _DOCUMENT_, it is possible that it will be up to you to provide the content that will replace these sentences.',
-        'Some common names for what you are reading are: filler text, placeholder text, and dummy text.',
-        'This is just dummy text. It is essentially a placeholder so you can see what your final typefaces will look like.',
         'You are currently reading some filler text.',
         'We aren\'t quite sure what to put here yet.',
-        'Don\'t waste too much of your time reading this placeholder text!',
-        'This text is only here to validate the layout. It isn\'t worth reading.',
-        'This is just temporary placeholder text; like when a friend saves a spot for you in line, only to be replaced by you when you return.',
-        'This text isn’t going to remain here because it doesn\'t pertain to the _DOCUMENT_.',
-        'Eventually, text related to your business, services or products will replace this content.',
-        'If you\'re reading this on the final version of the _DOCUMENT_, most likely someone forgot to replace it. You should probably let them know.',
-        'Placeholder text is useful when you need to see what a page design looks like, but the actual content isn\'t available. It\'s like having someone with identical measurements check the fit of a dress before trying it on yourself.',
         'This text is not final and should be replaced.',
-        'This is placeholder text that the _CAREER_ put here to make sure words appear properly on your _DOCUMENT_.',
-        'At some point someone will replace this block of text with useful words so customers can learn more about the products and services you offer!',
-        'If the _CAREER_ had some useful text to place here, this is how the typeface would appear.',
+        'Don\'t waste too much of your time reading this placeholder text!',
+        'The text that you are reading is only to fill the space visually.',
+        'This text is going to be replaced once the _DOCUMENT_ is completed.',
+        'You are currently reading text that is written in English, not Latin.',
+        'This text is only here to validate the layout. It isn\'t worth reading.',
         'Once the final copy for the _DOCUMENT_ has been created, it will go here.',
-        'If the creator of this _DOCUMENT_ knew what to put here, they would probably not have to paste text like this here at all.',
+        'Placing some text in this area makes it easy to see what a font looks like.',
+        'This text isn’t going to remain here because it doesn\'t pertain to the _DOCUMENT_.',
+        'Once the _DOCUMENT_ is complete this will read something different and more relevant.',
+        'You are currently reading Honest Ipsum, the placeholder text that needs no explanation.',
+        'There isn\'t a lot of value in these words. They are just telling you why they are here.',
+        'Eventually, text related to your business, services or products will replace this content.',
+        'If the _CAREER_ had some useful text to place here, this is how the typeface would appear.',
+        'Often, something called Lorem Ipsum to fill in paragraphs before their content is finalized.',
+        'Some common names for what you are reading are: filler text, placeholder text, and dummy text.',
         'This paragraph has been copied from a program that automatically generates paragraphs like this.',
-        'Determining whether the typeface works or not is only possible if there is text for it to be applied to.',
-        'A _CAREER_ will often use filler text so they can focus on the design of the _DOCUMENT_. It will be replaced with real content later.',
-        'If you are reading these words, it probably means the _DOCUMENT_ you are viewing is still under construction.',
         'This text is only here to show you what it looks when there is text in this area of the _DOCUMENT_.',
         'This sentence will be swapped out with actual content before the _DOCUMENT_ is shown to the public.',
-        'Placing some text in this area makes it easy to see what a font looks like.',
-        'There isn\'t a lot of value in these words. They are just telling you why they are here.',
+        'There needs to be something here, even though it\'s not what you might expect on a finished _DOCUMENT_.',
+        'Determining whether the typeface works or not is only possible if there is text for it to be applied to.',
+        'What you are reading now is not what you will be reading in this space once this _DOCUMENT_ is completed.',
+        'This is placeholder text that the _CAREER_ put here to make sure words appear properly on your _DOCUMENT_.',
+        'If you are reading these words, it probably means the _DOCUMENT_ you are viewing is still under construction.',
+        'This is just dummy text. It is essentially a placeholder so you can see what your final typefaces will look like.',
+        'When a _CAREER_ needs to fill in a paragraph temporarily, they will often use Latin words; Not in this paragraph though.',
+        'If the creator of this _DOCUMENT_ knew what to put here, they would probably not have to paste text like this here at all.',
+        'It is useful for a _CAREER_ to use placeholder text so they can easily see what different fonts look like on a realistic paragraph.',
+        'This is just temporary placeholder text; like when a friend saves a spot for you in line, only to be replaced by you when you return.',
+        'A _CAREER_ will often use filler text so they can focus on the design of the _DOCUMENT_. It will be replaced with real content later.',
+        'If you are reviewing this _DOCUMENT_, it is possible that it will be up to you to provide the content that will replace these sentences.',
+        'If you\'re reading this on the final version of the _DOCUMENT_, most likely someone forgot to replace it. You should probably let them know.',
+        'At some point someone will replace this block of text with useful words so customers can learn more about the products and services you offer!',
+        'Placeholder text is useful when you need to see what a page design looks like, but the actual content isn\'t available. It\'s like having someone with identical measurements check the fit of a dress before trying it on yourself.',
     ];
 
     /*
